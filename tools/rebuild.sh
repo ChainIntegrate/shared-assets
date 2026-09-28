@@ -13,6 +13,13 @@ mkdir -p "$R/ethers/6.13.4"
 cp "$N/ethers/dist/ethers.min.js" "$R/ethers/6.13.4/ethers.min.js"
 cp "$N/ethers/LICENSE.md"         "$R/ethers/6.13.4/LICENSE.md"
 
+# ethers v5 (UMD, espone la globale `ethers`): per i progetti non ancora
+# migrati a v6 (traceability-registry). Installata con l'alias npm "ethers5"
+# perché due versioni dello stesso pacchetto non possono convivere col nome.
+mkdir -p "$R/ethers/5.7.2"
+cp "$N/ethers5/dist/ethers.umd.min.js" "$R/ethers/5.7.2/ethers.umd.min.js"
+cp "$N/ethers5/LICENSE.md"             "$R/ethers/5.7.2/LICENSE.md"
+
 # erc725.js non ha un bundle ESM unico per il browser: lo produce esbuild
 mkdir -p "$R/erc725.js/0.28.2"
 echo 'export * from "@erc725/erc725.js"; export { default } from "@erc725/erc725.js";' > erc725-entry.mjs
