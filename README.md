@@ -17,6 +17,7 @@ Perché:
 | Percorso | Versione | Origine | Licenza |
 |---|---|---|---|
 | `ethers/6.13.4/ethers.min.js` | 6.13.4 | npm `ethers`, file `dist/ethers.min.js` (modulo ES) | MIT |
+| `ethers/5.7.2/ethers.umd.min.js` | 5.7.2 | npm `ethers@5.7.2`, file `dist/ethers.umd.min.js` (script classico, globale `ethers`) | MIT |
 | `erc725.js/0.28.2/erc725.min.js` | 0.28.2 | npm `@erc725/erc725.js`, impacchettato con esbuild in un unico modulo ES | Apache-2.0 |
 | `fonts/ibm-plex/` | Sans 1.1.0, Mono 2.5.0 | npm `@ibm/plex-sans`, `@ibm/plex-mono` (woff2 "complete") | SIL OFL 1.1 |
 
@@ -66,6 +67,13 @@ Aggiornamento: `cd /var/www/shared-assets && git pull && sha256sum -c SHA256SUMS
 </script>
 ```
 
+ethers v5 è un file UMD, non un modulo ES: si include come script classico e
+definisce la globale `ethers`:
+
+```html
+<script src="/shared/ethers/5.7.2/ethers.umd.min.js"></script>
+```
+
 I percorsi `/shared/...` esistono solo dietro Nginx: aprendo un file HTML
 direttamente dal disco non vengono trovati.
 
@@ -74,7 +82,7 @@ direttamente dal disco non vengono trovati.
 | Progetto | Librerie |
 |---|---|
 | supplier-trust-registry | ethers 6.13.4, erc725.js 0.28.2 (admin), IBM Plex |
-| traceability-registry | da migrare (oggi ethers 5.7.2 ed erc725.js senza versione fissata da jsDelivr) |
+| traceability-registry | ethers 5.7.2 (UMD), erc725.js 0.28.2 |
 
 ## Licenze
 
